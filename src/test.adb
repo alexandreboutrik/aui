@@ -23,6 +23,8 @@ begin
 
     Init_Screen;
 
+    Hide_Cursor;
+
     Get_Immediate(Input);
 
     Put_Line(Input'Image);

@@ -30,7 +30,11 @@ package Screen is
     procedure Put (X: Natural; Y: Natural; Text: String);
 
     -- ESC[1C - Move the cursor forward
-    procedure Cursor_Forward;
+    procedure Cursor_Forward with inline;
+
+    -- ESC[?25h - Show or hide cursor
+    procedure Show_Cursor with inline;
+    procedure Hide_Cursor with inline;
 
     -- ESC[CR
     procedure Carriage_Return;

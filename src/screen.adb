@@ -71,6 +71,12 @@ package body Screen is
     procedure Cursor_Forward is
     begin Put(ESC & "[1C"); end;
 
+    procedure Show_Cursor is
+    begin Put(ESC & "[?25h"); end;
+
+    procedure Hide_Cursor is
+    begin Put(ESC & "[?25l"); end;
+
     procedure Carriage_Return is
     begin
         Put(ESC & CR);
@@ -87,7 +93,10 @@ package body Screen is
     begin Clear_Screen; end;
 
     procedure Shutdown is
-    begin Clear_Screen; end;
+    begin
+        Clear_Screen;
+        Show_Cursor;
+    end;
 
 begin
     null;
