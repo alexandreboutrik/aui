@@ -15,6 +15,11 @@ procedure Test is
     Input : Character;
 
 begin
+
+    --- TTY test
+
+
+    ---
     Get_Immediate(Input);
 
     Put_Line(Input'Image);
@@ -23,12 +28,19 @@ begin
 
     delay 2.0;
 
-    Put(ESC & CR & ESC & "[1c" & "Now its White" & LF);
+    Carriage_Return;
 
-    Put("Next Line" & LF);
+    Put_Line("Now its White");
+
+    Put_Line("Next Line");
 
     delay 2.0;
 
     Clear_Screen;
+
+    Move_To(15, 20);
+    Put_Line("Starting at (15, 20)");
+
+    delay 2.0;
 
 end Test;

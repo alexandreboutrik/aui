@@ -5,9 +5,17 @@ package Screen is
     type Attributes is (RESET, BOLD, FAINT, ITALIC, UNDERLINE);
 
     -- ESC[31;$m - color
+    procedure Set_Color (Color: Colors; Attribute: Attributes);
+    procedure Set_Color (Color: Colors);
+
+    -- ESC[31;$m - color
     procedure Put_Colored (Color: Colors;
         Attribute: Attributes;
         Text: String);
+    procedure Put_Colored (Color: Colors; Text: String);
+
+    -- ESC[n;mH - Move cursor to (n, m)
+    procedure Move_To (X: Natural; M: Natural);
 
     -- ESC[1C - Move the cursor forward
     -- For some reason it is needed for Carriage_Return

@@ -4,16 +4,44 @@ with Ada.Characters.Latin_1;    use Ada.Characters.Latin_1;
 
 package body Screen is
 
-    procedure Put_Colored
-        (Color: Colors; Attribute: Attributes; Text: String) is
+    procedure Set_Color (Color: Colors; Attribute: Attributes) is
     begin
         Put(ESC & "[31;");
         Put(Colors'Pos(Color), Width => 0);
         Put(";");
         Put(Attributes'Pos(Attribute), Width => 0);
         Put("m");
+    end;
+
+    procedure Set_Color (Color: Colors) is
+    begin
+        Put(ESC & "[31;");
+        Put(Colors'Pos(Color), Width => 0);
+        Put("m");
+    end;
+
+    procedure Put_Colored
+        (Color: Colors; Attribute: Attributes; Text: String) is
+    begin
+        Set_Color(Color, Attribute);
         Put(Text);
         Put(ESC & "[0m");
+    end;
+
+    procedure Put_Colored (Color: Colors; Text: String) is
+    begin
+        Set_Color(Color);
+        Put(Text);
+        Put(ESC & "[0m");
+    end;
+
+    procedure Move_To (X: Natural; M: Natural) is
+    begin
+        Put(ESC & "[");
+        Put(X, Width => 0);
+        Put(";");
+        Put(M, Width => 0);
+        Put("H");
     end;
 
     procedure Cursor_Forward is
