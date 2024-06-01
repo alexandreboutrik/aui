@@ -52,7 +52,7 @@ package body Screen is
     procedure Carriage_Return is
     begin
         Put(ESC & CR);
-        Cursor_Forward;
+        Put(ESC & "[1G");
     end;
 
     procedure Clear_Screen is

@@ -18,7 +18,6 @@ package Screen is
     procedure Move_To (X: Natural; M: Natural);
 
     -- ESC[1C - Move the cursor forward
-    -- For some reason it is needed for Carriage_Return
     procedure Cursor_Forward;
 
     -- ESC[CR
