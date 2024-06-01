@@ -4,6 +4,15 @@ with Ada.Characters.Latin_1;    use Ada.Characters.Latin_1;
 
 package body Screen is
 
+    procedure Move_To (X: Natural; Y: Natural) is
+    begin
+        Put(ESC & "[");
+        Put(X, Width => 0);
+        Put(";");
+        Put(Y, Width => 0);
+        Put("H");
+    end;
+
     procedure Set_Color (Color: Colors; Attribute: Attributes) is
     begin
         Put(ESC & "[31;");
@@ -20,10 +29,28 @@ package body Screen is
         Put("m");
     end;
 
+    procedure Put_Colored (X: Natural; Y: Natural; Color: Colors;
+        Attribute: Attributes; Text: String) is
+    begin
+        Move_To(X, Y);
+        Set_Color(Color, Attribute);
+        Put(Text);
+        Put(ESC & "[0m");
+    end;
+
     procedure Put_Colored
         (Color: Colors; Attribute: Attributes; Text: String) is
     begin
         Set_Color(Color, Attribute);
+        Put(Text);
+        Put(ESC & "[0m");
+    end;
+
+    procedure Put_Colored (X: Natural; Y: Natural; Color: Colors;
+        Text: String) is
+    begin
+        Move_To(X, Y);
+        Set_Color(Color);
         Put(Text);
         Put(ESC & "[0m");
     end;
@@ -35,23 +62,19 @@ package body Screen is
         Put(ESC & "[0m");
     end;
 
-    procedure Move_To (X: Natural; M: Natural) is
+    procedure Put (X: Natural; Y: Natural; Text: String) is
     begin
-        Put(ESC & "[");
-        Put(X, Width => 0);
-        Put(";");
-        Put(M, Width => 0);
-        Put("H");
+        Move_To(X, Y);
+        Put(Text);
     end;
 
     procedure Cursor_Forward is
-    begin
-        Put(ESC & "[1C");
-    end;
+    begin Put(ESC & "[1C"); end;
 
     procedure Carriage_Return is
     begin
         Put(ESC & CR);
+        -- Move the cursor to the first column
         Put(ESC & "[1G");
     end;
 
@@ -59,6 +82,12 @@ package body Screen is
     begin
         Put(ESC & "[2J" & ESC & "[H");
     end;
+
+    procedure Init_Screen is
+    begin Clear_Screen; end;
+
+    procedure Shutdown is
+    begin Clear_Screen; end;
 
 begin
     null;

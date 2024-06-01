@@ -20,6 +20,9 @@ begin
 
 
     ---
+
+    Init_Screen;
+
     Get_Immediate(Input);
 
     Put_Line(Input'Image);
@@ -36,11 +39,10 @@ begin
 
     delay 2.0;
 
-    Clear_Screen;
+    Put(15, 20, "Starting at (15, 20)");
 
-    Move_To(15, 20);
-    Put_Line("Starting at (15, 20)");
+    Delay 2.0;
 
-    delay 2.0;
+    Shutdown;
 
 end Test;
