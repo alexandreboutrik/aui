@@ -10,4 +10,12 @@ AUI is a very simple Text-based User Interface for Ada.
 # Status
 
 AUI is still in a very early development stage.  
-Im basically just messing around with ASCII escape codes.
+Im messing around with ASCII escape codes.
+
+## TODO
+
+| - | Progress | Description |
+|:------------:|:-:|:-:|
+| Escape codes | ====...... C | understand how escape code works |
+| Termbox.c    | =......... C | read and see how termbox implements its buffers and printing |
+| ... | .......... . | ... |
