@@ -16,6 +16,6 @@ Im messing around with ASCII escape codes.
 
 | - | Progress | Description |
 |:------------:|:-:|:-:|
-| Escape codes | ====...... C | understand how escape code works |
-| Termbox.c    | =......... C | read and see how termbox implements its buffers and printing |
-| ... | .......... . | ... |
+| Escape codes | :black_square_button: In progress | understand how escape code works |
+| Termbox.c    | :white_square_button: Planned | read and see how termbox implements its buffers and printing |
+| ... | ............ | ... |
